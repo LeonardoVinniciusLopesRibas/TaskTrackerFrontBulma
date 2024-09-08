@@ -1,0 +1,66 @@
+<div class="container m-5 content">
+    <div class="columns is-mobile is-centered">
+        <div class="column is-narrow">
+            <button class="button is-warning" (click)="openModal()">Novo</button>
+        </div>
+    </div>
+
+    <div class="table-container mt-4">
+        <table class="table is-striped is-hoverable is-bordered taman ">
+            <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Nome</th>
+                    <th>Email</th>
+                    <th>Ações</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let user of users; let i = index">
+                    <th> {{ user.id }}</th>
+                    <td>{{ user.nome }}</td>
+                    <td>{{ user.email }}</td>
+                    <td>
+                        <button class="button is-danger" (click)="deletar(user.id)">Deletar</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="modal" [class.is-active]="isModalOpen">
+        <div class="modal-background" (click)="closeModal()"></div>
+        <div class="modal-card">
+            <header class="modal-card-head">
+                <p class="modal-card-title">Cadastrar Novo Usuário</p>
+                <button class="delete" aria-label="close" (click)="closeModal()"></button>
+            </header>
+            <section class="modal-card-body">
+                <form #userForm="ngForm">
+                    <div class="field">
+                        <label class="label" for="nome">Nome</label>
+                        <div class="control">
+                            <input type="text" class="input" id="nome" [(ngModel)]="novoUsuario.nome" name="nome" required>
+                        </div>
+                    </div>
+                    <div class="field">
+                        <label class="label" for="email">Email</label>
+                        <div class="control">
+                            <input type="email" class="input" id="email" [(ngModel)]="novoUsuario.email" name="email" required>
+                        </div>
+                    </div>
+                    <div class="field">
+                        <label class="label" for="senha">Senha</label>
+                        <div class="control">
+                            <input type="password" class="input" id="senha" [(ngModel)]="novoUsuario.senha" name="senha" required>
+                        </div>
+                    </div>
+                </form>
+            </section>
+            <footer class="modal-card-foot">
+                <button class="button is-light" (click)="closeModal()">Cancelar</button>
+                <button class="button is-primary" (click)="cadastrarUsuario()">Cadastrar</button>
+            </footer>
+        </div>
+    </div>
+</div>

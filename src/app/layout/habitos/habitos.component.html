@@ -1,0 +1,47 @@
+<div class="container mt-5 content">
+    <div class="columns is-vcentered mb-4">
+        <div class="column is-narrow">
+            <button class="button nav-button" (click)="prevMonth()">&#9664;</button>
+        </div>
+        <div class="column is-narrow">
+            <span class="month-year">{{ getCurrentMonthYear() }}</span>
+        </div>
+        <div class="column is-narrow">
+            <button class="button nav-button" (click)="nextMonth()">&#9654;</button>
+        </div>
+    </div>
+    <div class="columns">
+        <div class="column is-narrow">
+            <button class="button button-novo" (click)="openModal()">Novo</button>
+        </div>
+    </div>
+    <div class="table-container mt-4">
+        <table class="table is-striped is-hoverable is-bordered">
+            <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Descrição</th>
+                    <ng-container *ngFor="let day of daysOfMonth">
+                        <th>{{ day }}</th>
+                    </ng-container>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let habito of habitos; let i = index">
+                    <td>{{ habito.id }}</td>
+                    <td>{{ habito.descricao }}</td>
+                    <ng-container *ngFor="let day of daysOfMonth">
+                        <td>
+                            <input 
+                                type="checkbox" 
+                                [checked]="isHabitDone(habito.id, day)" 
+                                (change)="toggleHabitDay(habito.id, day)"
+                                [disabled]="!isDayInMonth(day)"
+                            />
+                        </td>
+                    </ng-container>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

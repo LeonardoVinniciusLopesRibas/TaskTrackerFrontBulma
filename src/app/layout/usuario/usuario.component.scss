@@ -1,0 +1,57 @@
+.content {
+    height: 65vh;
+    width: auto;
+    background-color: rgb(0, 0, 0);
+    box-shadow: 0px 15px 15px 5px rgba(0, 0, 0, 0.3);
+    border-radius: 15px;
+    padding: 10px;
+    position: relative;
+}
+
+.table-container {
+    overflow-x: auto;
+}
+
+.button.is-warning {
+    background-color: #ffe600;
+    color: #000000;
+    border-radius: 10px;
+    margin: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.button.is-warning:hover {
+    background-color: #ffe600;
+    transform: scale(1.05);
+}
+
+.button.is-warning:active {
+    background-color: #ffe600;
+    transform: scale(0.98);
+}
+
+.button.is-danger {
+    background-color: #b90000;
+    color: #fff;
+    border-radius: 10px;
+    margin: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.button.is-danger:hover {
+    background-color: #a70000;
+    transform: scale(1.05);
+}
+
+.button.is-danger:active {
+    background-color: #900000;
+    transform: scale(0.98);
+}
+
+.taman{
+    width: 100%;
+}

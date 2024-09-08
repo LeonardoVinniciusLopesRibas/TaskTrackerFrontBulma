@@ -1,0 +1,64 @@
+.content {
+    height: 65vh;
+    width: auto;
+    background-color: rgb(0, 0, 0);
+    box-shadow: 0px 15px 15px 5px rgba(0, 0, 0, 0.3);
+    border-radius: 15px;
+    padding: 10px;
+    position: relative;
+}
+
+.nav-button {
+    background-color: #ffffff;
+    color: #000;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    font-size: 24px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.nav-button:hover {
+    background-color: #f7d700;
+    transform: scale(1.1);
+}
+
+.nav-button:active {
+    background-color: #e0c300;
+    transform: scale(0.9);
+}
+
+.month-year {
+    font-size: 18px;
+    line-height: 40px;
+    text-align: center;
+}
+
+.button-novo {
+    background-color: #ffe600;
+    color: #000000;
+    padding-left: 10px;
+    padding-right: 10px;
+    border-radius: 10px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.button-novo:hover {
+    background-color: #ffe600;
+    transform: scale(1.05);
+}
+
+.button-novo:active {
+    background-color: #ffe600;
+    transform: scale(0.98);
+}
+
+.table-container {
+    overflow-x: auto;
+}

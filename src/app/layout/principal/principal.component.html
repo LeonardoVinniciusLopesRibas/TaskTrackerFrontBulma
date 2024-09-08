@@ -1,0 +1,12 @@
+<div class="header has-shadow">
+    <div class="buttons">
+      <a class="button is-primary" [routerLink]="['/admin/usuario']">Usuários</a>
+      <a class="button is-primary" [routerLink]="['/admin/tarefas']">Tarefas</a>
+      <a class="button is-primary" [routerLink]="['/admin/habitos']">Hábitos</a>
+      <a class="button is-danger" (click)="deslogar()">Sair</a>
+    </div>
+  </div>
+  <div class="container">
+    <router-outlet></router-outlet>
+  </div>
+  
