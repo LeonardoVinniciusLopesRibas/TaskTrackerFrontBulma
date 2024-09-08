@@ -1,11 +1,12 @@
-import { NgFor } from '@angular/common';
+import { CommonModule, NgFor } from '@angular/common';
 import { Component, inject, NgModule, OnInit } from '@angular/core';
 import { HabitosService } from '../../service/habitos.service';
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-habitos',
   standalone: true,
-  imports: [NgFor],
+  imports: [CommonModule, FormsModule],
   templateUrl: './habitos.component.html',
   styleUrls: ['./habitos.component.scss']
 })
@@ -16,6 +17,8 @@ export class HabitosComponent implements OnInit {
   daysOfMonth: number[] = [];
   currentMonth: number = new Date().getMonth();
   currentYear: number = new Date().getFullYear();
+  isModalOpen: boolean = false;
+  newHabit: any = { descricao: '', usuario: '' };
 
   ngOnInit() {
     this.getHabitos();
@@ -33,6 +36,19 @@ export class HabitosComponent implements OnInit {
     });
   }
 
+  openModal() {
+    const usuario = localStorage.getItem('usuario');
+    if (usuario) {
+      this.newHabit.usuarioId = JSON.parse(usuario).id;  
+    }
+    this.isModalOpen = true;
+  }
+
+  closeModal() {
+    this.isModalOpen = false;
+    this.newHabit = { descricao: '', usuarioId: this.newHabit.usuarioId }; 
+  }
+
   generateDaysOfMonth() {
     const date = new Date(this.currentYear, this.currentMonth + 1, 0);
     const daysInMonth = date.getDate();
@@ -40,6 +56,7 @@ export class HabitosComponent implements OnInit {
   }
 
   isHabitDone(habitId: number, day: number): boolean {
+
     return false;
   }
 
@@ -48,9 +65,6 @@ export class HabitosComponent implements OnInit {
 
   isDayInMonth(day: number): boolean {
     return this.daysOfMonth.includes(day);
-  }
-
-  openModal() {
   }
 
   nextMonth() {
@@ -82,4 +96,20 @@ export class HabitosComponent implements OnInit {
     }
     this.generateDaysOfMonth();
   }
+
+
+  submitForm() {
+    if (this.newHabit.descricao) {
+      this.habitosService.post(this.newHabit).subscribe({
+        next: () => {
+          this.getHabitos();  
+          this.closeModal();
+        },
+        error: (err) => {
+          console.error('Erro ao criar hábito:', err);
+        }
+      });
+    }
+  }
+
 }

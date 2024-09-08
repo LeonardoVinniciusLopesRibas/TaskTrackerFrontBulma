@@ -45,3 +45,27 @@
         </table>
     </div>
 </div>
+
+<div class="modal" [class.is-active]="isModalOpen">
+    <div class="modal-background" (click)="closeModal()"></div>
+    <div class="modal-card">
+        <header class="modal-card-head">
+            <p class="modal-card-title">Novo Hábito</p>
+            <button class="delete" aria-label="close" (click)="closeModal()"></button>
+        </header>
+        <section class="modal-card-body">
+            <form (ngSubmit)="submitForm()">
+                <div class="field">
+                    <label class="label">Descrição</label>
+                    <div class="control">
+                        <input class="input" type="text" placeholder="Descrição do hábito" [(ngModel)]="newHabit.descricao" name="descricao" required>
+                    </div>
+                </div>
+            </form>
+        </section>
+        <footer class="modal-card-foot">
+            <button class="button is-success" (click)="submitForm()">Salvar</button>
+            <button class="button" (click)="closeModal()">Cancelar</button>
+        </footer>
+    </div>
+</div>
